@@ -6,9 +6,11 @@ public class FormOne {
     JLabel labelid, labelusername, labelpassword;
     JTextField textfieldid, textfieldusername;
     JPasswordField passwordfield;
-    JButton btninsert;
+    JButton btninsert, btnupdate, btndelete, btnDisplay;
 
-    FormOne() {
+
+    FormOne()
+    {
         f = new JFrame("Login Form");
 
         // For ID
@@ -29,10 +31,21 @@ public class FormOne {
         passwordfield = new JPasswordField();
         passwordfield.setBounds(200, 150, 150, 30);
 
-        // For Button
+        // For Button insert button.
         btninsert = new JButton("Insert");
         btninsert.setBounds(200, 200, 100, 30);
 
+        //    for display button
+//        btnDisplay = new JButton("Display");
+//        btnDisplay.setBounds(200, 250, 100, 30);
+
+//        for delelte button
+//        btndelete = new JButton("Delete");
+//        btndelete.setBounds(200, 300, 100, 30);
+
+//        for Update button.
+//        btnupdate = new JButton("Update");
+//        btnupdate.setBounds(200, 350, 100, 30);
         // Add all components to JFrame
         f.add(labelid);
         f.add(textfieldid);
@@ -41,7 +54,9 @@ public class FormOne {
         f.add(labelpassword);
         f.add(passwordfield);
         f.add(btninsert);
-
+//        f.add(btnDisplay);
+//        f.add(btndelete);
+//        f.add(btnupdate);
         // Database Connection
         try {
             // Step 1: Register the driver
@@ -68,19 +83,22 @@ public class FormOne {
                     pstmt.setString(3, Password);
 
                     // Execute the prepared statement
-                    int rowsInserted = pstmt.executeUpdate();
-                    if (rowsInserted > 0) {
-                        System.out.println("A new employee was inserted successfully!");
-                    }
+                     pstmt.executeUpdate();
+                  JOptionPane.showMessageDialog(btninsert,"Inserted Sucessfully");
+                  con.close();
 
                 } catch (Exception ex) {
                     System.out.println(e);
                 }
             });
 
+
+
         } catch (Exception e) {
             System.out.println(e);
         }
+
+//for display button
 
         // Set the size of the frame
         f.setSize(1000, 1000);
