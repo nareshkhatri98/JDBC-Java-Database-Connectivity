@@ -1,3 +1,9 @@
+/*using Mouse Adapter.
+Wap using swing /awt to find the addition of two number when the button is pressed and
+calculated the difference of two number when the button is released from input 1, input 2 and result */
+
+
+
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -39,16 +45,19 @@ public class Calculation {
 
         Calculate.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                try {
-                    int number1 = Integer.parseInt(Input1field.getText());
-                    int number2 = Integer.parseInt(Input2field.getText());
-                    int sum = number1 + number2;
-                    int diff = number1 - number2;
-                    Resultfield.setText("Sum: " + sum + ", Diff: " + diff);
-                } catch (NumberFormatException ex) {
-                    Resultfield.setText("Invalid input");
-                }
+          public void mousePressed(MouseEvent e){
+               int Number1 = Integer.parseInt(Input1field.getText());
+               int Number2 = Integer.parseInt(Input2field.getText());
+               int sum = Number1 + Number2;
+               Resultfield.setText(Integer.toString(sum));
+
+            }
+
+            public void mouseReleased(MouseEvent e) {
+               int Number1 = Integer.parseInt(Input1field.getText());
+               int Number2 = Integer.parseInt(Input2field.getText());
+               int Diff = Number1 - Number2;
+               Resultfield.setText(Integer.toString(Diff));
             }
         });
 
