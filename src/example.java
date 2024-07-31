@@ -7,10 +7,16 @@ public class example extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.RED);
-        g2d.fillRect(50, 50, 100, 50);
-        g2d.setColor(Color.GREEN);
-        g2d.fillOval(300, 50, 100, 100);
+        g2d.setColor(Color.BLACK);
+        g2d.fillRect(300, 50, 100, 100);
+        String text = "I am java developer";
+        FontMetrics fm = g2d.getFontMetrics();
+        int textWidth = fm.stringWidth(text);
+        int textHeight = fm.getHeight();
+        int x = 300 + (100 - textWidth) / 2;
+        int y = 50 + ((100 - textHeight) / 2) + fm.getAscent();
+        g2d.setColor(Color.WHITE);
+        g2d.drawString(text, x, y);
     }
 
     public static void main(String[] args) {
